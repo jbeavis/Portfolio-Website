@@ -1,0 +1,96 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    margin-bottom: 3rem;
+    padding: 0;
+    font-size: 1rem; /* = 16px */
+    line-height: 1.6;
+}
+h1{
+    font-weight: bold;
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.navbar{
+    text-align: center;
+    padding-top: 1%;
+}
+.navbar li{
+    display: inline;
+    margin: 0 1rem;
+}
+.main{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.content{
+    width:84%;
+    margin: 0 auto;
+}
+#aboutFlex{
+    display: flex;
+    flex-wrap: wrap;  
+    gap: 1rem;
+}
+#aboutText{
+    flex: 1;
+    min-width: 0; 
+}
+#profilePhoto{
+    height: auto;
+    width: 28%;
+    max-width: 100%;
+    box-shadow: 0px 4px 10px 0px ;
+}
+.videoWrapper{
+    text-align: center;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+hr{
+    margin-top: 2rem;
+}
+#projects img{
+    width:46%;
+    max-width: 100%;
+    height:auto;
+}
+.imageWrapper{
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    #aboutFlex {
+        flex-direction: column;
+        align-items: center;
+    }
+    #profilePhoto{
+        height: auto;
+        width: 630%;
+        max-width: 80%;
+
+    }
+
+}

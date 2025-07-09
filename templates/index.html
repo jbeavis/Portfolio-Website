@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>James Beavis</title>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <ul>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a href="#links">Links</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="title">
+            <h1>James Beavis</h1>
+        </div>
+
+    
+
+        <div class="main">
+            <hr>
+            <div id="about">
+                <h2>About</h2>
+                <div class="content">
+                    <div class="contentInner">
+                        <div id="aboutFlex">
+                            <img id="profilePhoto" src="{{url_for('static', filename='images/profilePhoto.png')}}">
+                            <div id="aboutText">
+                                <p>I am a BSc Computer Science graduate from Cardiff University, achieving First Class Honours. My interests include machine learning, artificial intelligence and web development. I'm especially interested in accessible technology and the ethical impact of computing.</p>
+                                <p>I'm currently looking for opportunities where I can continue learning, contribute to meaningful projects, and grow as part of a technically strong, collaborative team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            <div id="projects">
+                <h2>Projects</h2>
+                <div class="content">
+                    <div class="contentInner">
+                        <h3>Controlling IoT devices with our brain, eyes and facial expressions.</h3>
+                        <div class="imageWrapper">
+                            <img src="{{url_for('static', filename='images/blink.png')}}">
+                        </div>
+                        <p>For the 17.8% of people in England and Wales who are disabled, using conventional means of controlling technology such as keyboards, mice and touch screens may be difficult or even impossible. Accommodations in the form of alternative means of control exist, but they often come with caveats. This calls for a new accommodation for these individuals, particularly those with motor impairments.</p>
+                        <p>This study explores the use of biosignals, specifically EEG, EOG and EMG, as an alternative means of controlling technology. Signals from the brain, eyes and facial muscles are captured and filtered, and useful time and frequency domain features are extracted from the raw data. These features are used to train a random forest machine learning model. The resulting classifier is used to predict a user’s actions in real time.</p>
+                        <p>The model is designed to identify when the user is looking up, down, left and right, clenching their jaw, and generating alpha waves. The system’s ability to predict the user’s actions is demonstrated through the scenario of controlling the playback of music; the person’s actions are mapped to controls.</p>
+                        <p>5-Fold cross-validation showed that the ML model has an average accuracy of 95.71%. The system represents a promising proof-of-concept for biosignal-driven assistive interfaces, though further validation on a broader user base is required.</p>  
+                        <p>A demonstration of the system in use can be found at the video below.</p>
+                        <div class="videoWrapper">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/WC70dQBcvec?si=vdnDTIwhQseQZLe-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr>
+
+            <div id="links">
+                <h2>Links</h2>
+                <a href="https://www.linkedin.com/in/james-beavis/">LinkedIn</a> 
+                <a href="https://github.com/jbeavis">GitHub</a>
+                <a href="{{url_for('static', filename='files/James Beavis CV.pdf')}}">CV</a>
+            </div>
+
+            <h2>To Do:</h2>
+            <ul>
+                <li>Add images to links buttons</li>
+                <li>Add gallery, using sql</li>
+                <li>Add another project</li>
+                <li>Actually use {{secret}}</li>
+            </ul>
+        </div>
+    </body>
+</html>
