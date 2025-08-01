@@ -6,7 +6,7 @@ from flask import session
 import secrets
 
 app = Flask(__name__)
-client = genai.Client(api_key="AIzaSyANnYFseMBt1HD3nDTdJ9m6Wtpu7E1_SN8")
+client = genai.Client() # Ensure the api key is known
 app.secret_key = secrets.token_hex(32)  # Needed for session support
 
 # Load CV once at startup
