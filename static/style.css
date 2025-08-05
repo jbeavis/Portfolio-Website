@@ -101,6 +101,12 @@ hr{
     color: #007acc; 
 }
 
+#projects .content .projectExample{
+    border-style: solid;
+    border-width: 0.1em;
+    padding: 2%;
+}
+
 @media (max-width: 700px) {
     #aboutFlex {
         flex-direction: column;

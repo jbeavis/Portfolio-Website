@@ -4,9 +4,12 @@ from google.genai import types
 import pathlib
 from flask import session
 import secrets
+from dotenv import load_dotenv
+import os
 
+load_dotenv(override=True)  
 app = Flask(__name__)
-client = genai.Client() # Ensure the api key is known
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY")) # Ensure the api key is known 
 app.secret_key = secrets.token_hex(32)  # Needed for session support
 
 # Load CV once at startup
