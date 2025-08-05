@@ -81,6 +81,9 @@ hr{
 .imageWrapper{
     text-align: center;
 }
+#links p{
+    text-align: center;
+}
 
 /* Chatbot */
 #chat { 
