@@ -26,6 +26,7 @@ google-genai==1.27.0
 googleapis-common-protos==1.69.2
 grove==0.0.0
 grove.py==0.6
+gunicorn==23.0.0
 h11==0.16.0
 httpcore==1.0.9
 httplib2==0.22.0
@@ -39,6 +40,7 @@ MIDIUtil==1.2.1
 numpy==1.24.3
 oauthlib==3.2.2
 opencv-python==4.10.0.84
+packaging==25.0
 pandas==2.2.3
 proto-plus==1.26.1
 protobuf==6.30.2
