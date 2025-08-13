@@ -6,11 +6,13 @@ from flask import session
 import secrets
 from dotenv import load_dotenv
 import os
+import game
 
 load_dotenv(override=True)  
 app = Flask(__name__)
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY")) # Ensure the api key is known 
 app.secret_key = secrets.token_hex(32)  # Needed for session support
+grid = game.template
 
 # Load CV once at startup
 cv_path = pathlib.Path('static/files/James Beavis CV.pdf')
@@ -48,10 +50,45 @@ def ask():
 
     return jsonify({'response': response.text})
 
+@app.route('/naughtsandcrosses')
+def naughtsandcrosses():
+    return render_template('naughtsandcrosses.html', grid=grid)
+
 @app.route('/reset', methods=['POST'])
 def reset():
     session.pop('history', None)
     return jsonify({'status': 'reset'})
 
+@app.route("/play", methods=["POST"])
+def play():
+    global grid
+    data = request.json
+    row, col = data["row"], data["col"]
+
+    # Player move
+    if grid[row][col] == "":
+        grid[row][col] = game.HUMAN # Human symbol
+    elif game.winCheck(grid) is not None:
+        return jsonify({"error": "Game over"}), 400
+    else:
+        return jsonify({"error": "Invalid move"}), 400
+
+    # Check if player won
+    if game.winCheck(grid) is not None:
+        return jsonify({"grid": grid, "winner": game.winCheck(grid)})
+
+    # AI move
+    ai_row, ai_col = game.findBestMove(grid)
+    grid[ai_row][ai_col] = game.AI
+
+    return jsonify({"grid": grid, "winner": game.winCheck(grid)})
+
+@app.route("/replay", methods=["POST"])
+def replay():
+    global grid
+    for row in range(len(grid)):
+        for column in range(len(grid[row])):
+            grid[row][column] = ""
+    return jsonify({"grid": grid})
 if __name__ == '__main__':
     app.run(debug=True)

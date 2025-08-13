@@ -6,6 +6,16 @@ body{
     font-size: 1rem; /* = 16px */
     line-height: 1.6;
 }
+table { 
+    border-collapse: collapse; margin: 20px auto; 
+}
+td {
+    width: 80px; height: 80px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 2em;
+    cursor: pointer;
+}
 h1{
     font-weight: bold;
     text-align: center;

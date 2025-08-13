@@ -1,108 +1,102 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>James Beavis</title>
+{% extends "parent.html" %}
+{% block head %}
+{{ super() }}
 
-        <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.4/dist/purify.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- these two are for markdown and sanitising output-->
-        <script src="{{url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}
 
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.4/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- these two are for markdown and sanitising output-->
+    <script src="{{url_for('static', filename='js/chatbot.js') }}"></script>
 
-    </head>
+{% endblock %}
 
-    <body>
-        <div class="navbar">
-            <ul>
-                <li>
-                    <a href="#about">About</a>
-                </li>
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-                <li>
-                    <a href="#links">Links</a>
-                </li>
-            </ul>
-        </div>
+{% block title %}
+    <div class="title">
+        <h1>James Beavis</h1>
+    </div>    
+{% endblock %}
 
-        <div class="title">
-            <h1>James Beavis</h1>
-        </div>    
-
-        <div class="main">
-            <hr>
-            <div id="about">
-                <h2>About</h2>
-                <div class="content">
-                    <div id="aboutFlex">
-                        <img id="profilePhoto" src="{{url_for('static', filename='images/profilePhoto.png')}}">
-                        <div id="aboutText">
-                            <p>I am a BSc Computer Science graduate from Cardiff University, achieving First Class Honours. My interests include machine learning, artificial intelligence and web development. I'm especially interested in accessible technology and the ethical impact of computing.</p>
-                            <p>I'm currently looking for opportunities where I can continue learning, contribute to meaningful projects, and grow as part of a technically strong, collaborative team.</p>
-                        </div>
-                    </div>
-                    
-                </div>
+{% block content %}
+    <hr>
+    <div id="about">
+    <h2>About</h2>
+    <div class="content">
+        <div id="aboutFlex">
+            <img id="profilePhoto" src="{{url_for('static', filename='images/profilePhoto.png')}}">
+            <div id="aboutText">
+                <p>I am a BSc Computer Science graduate from Cardiff University, achieving First Class Honours. My interests include machine learning, artificial intelligence and web development. I'm especially interested in accessible technology and the ethical impact of computing.</p>
+                <p>I'm currently looking for opportunities where I can continue learning, contribute to meaningful projects, and grow as part of a technically strong, collaborative team.</p>
             </div>
-            
-            <hr>
+        </div>
+        
+    </div>
 
-            <div id="projects">
-                <h2>Projects</h2>
-                <div class="content">
-                    <div class = "projectExample">
-                        <h3>Controlling IoT devices with our brain, eyes and facial expressions.</h3>
-                        <div class="imageWrapper">
-                            <img src="{{url_for('static', filename='images/blink.png')}}">
-                        </div>
-                        <p>For the 17.8% of people in England and Wales who are disabled, using conventional means of controlling technology such as keyboards, mice and touch screens may be difficult or even impossible. Accommodations in the form of alternative means of control exist, but they often come with caveats. This calls for a new accommodation for these individuals, particularly those with motor impairments.</p>
-                        <p>This study explores the use of biosignals, specifically EEG, EOG and EMG, as an alternative means of controlling technology. Signals from the brain, eyes and facial muscles are captured and filtered, and useful time and frequency domain features are extracted from the raw data. These features are used to train a random forest machine learning model. The resulting classifier is used to predict a user’s actions in real time.</p>
-                        <p>The model is designed to identify when the user is looking up, down, left and right, clenching their jaw, and generating alpha waves. The system’s ability to predict the user’s actions is demonstrated through the scenario of controlling the playback of music; the person’s actions are mapped to controls.</p>
-                        <p>5-Fold cross-validation showed that the ML model has an average accuracy of 95.71%. The system represents a promising proof-of-concept for biosignal-driven assistive interfaces, though further validation on a broader user base is required.</p>  
-                        <p>A demonstration of the system in use can be found at the video below.</p>
-                        <div class="videoWrapper">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/WC70dQBcvec?si=vdnDTIwhQseQZLe-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                        <!-- Include which technologies were used as a footer-->
-                        <br>
-                        <strong>Python, Scikit-Learn, Seaborn, Matplotlib</strong>
-                        <p><strong><a href="https://github.com/jbeavis/Portfolio-Website">GitHub</a></strong></p>
-                    </div>
-                    <br> <!-- some divider that isnt hr-->
-                    <div class ="projectExample">
-                        <h3>Personal Portfolio with Gemini AI</h3>
-                        <p>This website was made using Flask to enable me to work with Google's Gemini API using Python. Here, you can chat with Gemini about my skills and professional experience. This website uses a custom CSS stylesheet, and JavaScript. </p>
-                        <p>The website is currently deployed on <a href="https://render.com/">https://render.com/</a>, with plans to later deploy it to a private VPS.</p>
-                        <div id="chat">
-                            <div class="message">
-                                <span class="bot">Bot:</span>
-                                Hello! I'm  Gemini. Feel free to ask me a question about James and his technical experience.
-                            </div>
-                        </div>
-                        <input type="text" id="userInput" placeholder="Ask a question..." style="width: 80%;" onkeydown="handleKey(event)">
-                        <button onclick="sendMessage()">Send</button>
-                        <button onclick="resetChat()">Reset</button>
-                        <br><br>
-                        <strong>HTML, CSS, Flask, Python, JavaScript</strong>
-                        <p><strong><a href="https://github.com/jbeavis/Controlling-IoT-Devices-Using-Our-Brain-Eyes-and-Facial-Expressions">GitHub</a></strong></p>
+    <hr>
+    <div id="projects">
+        <h2>Projects</h2>
+        <div class="content">
+            <div class = "projectExample">
+                <h3>Controlling IoT devices with our brain, eyes and facial expressions.</h3>
+                <div class="imageWrapper">
+                    <img src="{{url_for('static', filename='images/blink.png')}}">
+                </div>
+                <p>For the 17.8% of people in England and Wales who are disabled, using conventional means of controlling technology such as keyboards, mice and touch screens may be difficult or even impossible. Accommodations in the form of alternative means of control exist, but they often come with caveats. This calls for a new accommodation for these individuals, particularly those with motor impairments.</p>
+                <p>This study explores the use of biosignals, specifically EEG, EOG and EMG, as an alternative means of controlling technology. Signals from the brain, eyes and facial muscles are captured and filtered, and useful time and frequency domain features are extracted from the raw data. These features are used to train a random forest machine learning model. The resulting classifier is used to predict a user’s actions in real time.</p>
+                <p>The model is designed to identify when the user is looking up, down, left and right, clenching their jaw, and generating alpha waves. The system’s ability to predict the user’s actions is demonstrated through the scenario of controlling the playback of music; the person’s actions are mapped to controls.</p>
+                <p>5-Fold cross-validation showed that the ML model has an average accuracy of 95.71%. The system represents a promising proof-of-concept for biosignal-driven assistive interfaces, though further validation on a broader user base is required.</p>  
+                <p>A demonstration of the system in use can be found at the video below.</p>
+                <div class="videoWrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WC70dQBcvec?si=vdnDTIwhQseQZLe-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <!-- Include which technologies were used as a footer-->
+                <br>
+                <strong>Python, Scikit-Learn, Seaborn, Matplotlib</strong>
+                <p><strong><a href="https://github.com/jbeavis/Portfolio-Website">GitHub</a></strong></p>
+            </div>
+            <br> <!-- some divider that isnt hr-->
+            <div class ="projectExample">
+                <h3>Personal Portfolio with Gemini AI</h3>
+                <p>This website was made using Flask to enable me to work with Google's Gemini API using Python. Here, you can chat with Gemini about my skills and professional experience. This website uses a custom CSS stylesheet, and JavaScript. </p>
+                <p>The website is currently deployed on <a href="https://render.com/">https://render.com/</a>, with plans to later deploy it to a private VPS.</p>
+                <div id="chat">
+                    <div class="message">
+                        <span class="bot">Bot:</span>
+                        Hello! I'm  Gemini. Feel free to ask me a question about James and his technical experience.
                     </div>
                 </div>
+                <input type="text" id="userInput" placeholder="Ask a question..." style="width: 80%;" onkeydown="handleKey(event)">
+                <button onclick="sendMessage()">Send</button>
+                <button onclick="resetChat()">Reset</button>
+                <br><br>
+                <strong>HTML, CSS, Flask, Python, JavaScript</strong>
+                <p><strong><a href="https://github.com/jbeavis/Controlling-IoT-Devices-Using-Our-Brain-Eyes-and-Facial-Expressions">GitHub</a></strong></p>
             </div>
-
-            <hr>
-
-            <div id="links">
-                <h2>Links</h2>
-                <p>
-                    <a href="https://www.linkedin.com/in/james-beavis/">LinkedIn</a> 
-                    <a href="https://github.com/jbeavis">GitHub</a>
-                    <a href="{{url_for('static', filename='files/James Beavis CV.pdf')}}">CV</a>                    
-                </p>
+            <br>
+            <div class = "projectExample">
+                <h3>Minimax Naughts and Crosses.</h3>
+                <p>A browser-based Naughts and Crosses game featuring an AI opponent that never loses, implemented using the minimax algorithm,  an AI algorithm for adversarial decision-making. The app uses Flask to handle game logic and communication, with a JavaScript frontend for real-time interaction.</p>
+                <p>The game is available to play <a href="{{ url_for('naughtsandcrosses')}}">here</a>.</p>
+                <!-- Include which technologies were used as a footer-->
+                <br>
+                <strong>AI/ Minimax Algorithm, Python, JavaScript, JSON</strong>
+                <p><strong><a href="https://github.com/jbeavis/Portfolio-Website">GitHub</a></strong></p>
             </div>
-
-            <hr>
-
         </div>
-    </body>
-</html>
+    </div>
+
+    <hr>
+
+    <div id="links">
+        <h2>Links</h2>
+        <p>
+            <a href="https://www.linkedin.com/in/james-beavis/">LinkedIn</a> 
+            <a href="https://github.com/jbeavis">GitHub</a>
+            <a href="{{url_for('static', filename='files/James Beavis CV.pdf')}}">CV</a>                    
+        </p>
+    </div>
+
+    <hr>
+
+
+{% endblock %}
