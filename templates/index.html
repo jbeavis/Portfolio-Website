@@ -31,6 +31,7 @@
         </div>
         
     </div>
+    </div>
     <br>
     <hr>
     <div id="projects">
@@ -41,10 +42,9 @@
                 <div class="imageWrapper">
                     <img src="{{url_for('static', filename='images/blink.png')}}">
                 </div>
-                <p>For the 17.8% of people in England and Wales who are disabled, using conventional means of controlling technology such as keyboards, mice and touch screens may be difficult or even impossible. Accommodations in the form of alternative means of control exist, but they often come with caveats. This calls for a new accommodation for these individuals, particularly those with motor impairments.</p>
                 <p>This study explores the use of biosignals, specifically EEG, EOG and EMG, as an alternative means of controlling technology. Signals from the brain, eyes and facial muscles are captured and filtered, and useful time and frequency domain features are extracted from the raw data. These features are used to train a random forest machine learning model. The resulting classifier is used to predict a user’s actions in real time.</p>
                 <p>The model is designed to identify when the user is looking up, down, left and right, clenching their jaw, and generating alpha waves. The system’s ability to predict the user’s actions is demonstrated through the scenario of controlling the playback of music; the person’s actions are mapped to controls.</p>
-                <p>5-Fold cross-validation showed that the ML model has an average accuracy of 95.71%. The system represents a promising proof-of-concept for biosignal-driven assistive interfaces, though further validation on a broader user base is required.</p>  
+                <p>5-Fold cross-validation showed that the ML model has an average accuracy of 95.71%.</p>  
                 <p>A demonstration of the system in use can be found at the video below.</p>
                 <div class="videoWrapper">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/WC70dQBcvec?si=vdnDTIwhQseQZLe-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -75,10 +75,6 @@
                 <h3>School Timetabler. (Ongoing)</h3>
                 <p>A school administrator told me it currently takes around two weeks to manually build a timetable for a school of only around 20 students. Their method relied on trial and error.</p>
                 <p>This project explores whether a better approach is possible. By modeling the problem as a Constraint Satisfaction Problem (CSP), we can automatically generate a clash-free timetable.</p>
-                <p>The system takes into account:</p>
-                <p>- Which rooms support which subjects</p>
-                <p>- What classes exist and how many times per week they meet</p>
-                <p>- Which teachers teach each subject, and on which days they are available</p>
                 <p>Using a backtracking CSP solver, the program will produce a valid timetable without conflicts.</p>
                 <p>Development is currently ongoing. Future development will involve a web-based UI, with the program as an API call, so that the administrator can use the project in the next school year.</p>
                 <!-- Include which technologies were used as a footer-->
@@ -88,6 +84,9 @@
             </div>
             <div class = "projectExample">
                 <h3>Minimax Naughts and Crosses.</h3>
+                <div class="imageWrapper">
+                    <img style="width:25%" src="{{url_for('static', filename='images/naughtsCrosses.png')}}">
+                </div>
                 <p>A browser-based Naughts and Crosses game featuring an AI opponent that never loses, implemented using the minimax algorithm,  an AI algorithm for adversarial decision-making. The app uses Flask to handle game logic and communication, with a JavaScript frontend for real-time interaction.</p>
                 <p>The game is available to play <a href="{{ url_for('naughtsandcrosses')}}">here</a>.</p>
                 <!-- Include which technologies were used as a footer-->
