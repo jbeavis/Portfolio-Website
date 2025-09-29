@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, url_for
+from flask import Flask, render_template, request, jsonify, url_for, redirect
 from google import genai
 from google.genai import types
 import pathlib
@@ -21,6 +21,11 @@ cv_data = types.Part.from_bytes(
     mime_type='application/pdf'
 )
 
+@app.before_request
+def redirect_to_custom_domain():
+    if request.host.endswith("onrender.com"):
+        return redirect("http://jamesbeavis.co.uk" + request.full_path, code=301)
+    
 @app.route('/')
 def index():
     return render_template('index.html')
